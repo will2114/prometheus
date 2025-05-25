@@ -326,7 +326,7 @@ func TestPrometheusConverter_AddSummaryDataPoints(t *testing.T) {
 				Settings{
 					ExportCreatedMetric: true,
 				},
-				metric.Name(),
+				prompb.MetricMetadata{MetricFamilyName: metric.Name()},
 			)
 
 			require.Equal(t, tt.want(), converter.unique)
@@ -437,7 +437,7 @@ func TestPrometheusConverter_AddHistogramDataPoints(t *testing.T) {
 				Settings{
 					ExportCreatedMetric: true,
 				},
-				metric.Name(),
+				prompb.MetricMetadata{MetricFamilyName: metric.Name()},
 			)
 
 			require.Equal(t, tt.want(), converter.unique)
